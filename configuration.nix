@@ -42,12 +42,19 @@
   environment.systemPackages = with pkgs; [
     hyprland waybar wofi kitty swww neovim git curl wget
     firefox steam discord spotify
+    opera
     bluez bluez-utils pulseaudio pavucontrol
     networkmanagerapplet
+
     # Wine & helpers
     wineWowPackages.stable
     winetricks
     bottles
+    lutris
+    mangohud
+    gamescope
+    vulkan-tools
+
     # Fun / testing stuff
     lolcat cowsay htop
   ];
@@ -59,10 +66,15 @@
   ### Sound
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
   security.rtkit.enable = true;
 
-  ### OpenGL (basic support)
+  ### OpenGL + Vulkan support
   hardware.opengl.enable = true;
+  hardware.opengl.driSupport32Bit = true;
+
+  ### NVIDIA-specific (optional, uncomment if needed)
+  # hardware.nvidia.modesetting.enable = true;
 
   ### Allow Unfree Packages (Steam, Discord, etc.)
   nixpkgs.config.allowUnfree = true;
