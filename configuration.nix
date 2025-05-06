@@ -74,7 +74,6 @@ environment.sessionVariables = {
   services.blueman.enable = true;
 
   ### Sound
-  sound.enable = true;
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
   security.rtkit.enable = true;
