@@ -37,7 +37,17 @@
   ### Hyprland & Environment
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
-  services.xserver.windowManager.hyprland.enable = true;
+  programs.hyprland = {
+  enable = true;
+  xwayland.enable = true;
+  # nvidiaPatches = true; # only if using NVIDIA
+};
+
+environment.sessionVariables = {
+  WLR_NO_HARDWARE_CURSORS = "1";
+  NIXOS_OZONE_WL = "1";
+};
+
 
   environment.systemPackages = with pkgs; [
     hyprland waybar wofi kitty swww neovim git curl wget
