@@ -63,7 +63,7 @@ environment.sessionVariables = {
     hyprland waybar wofi kitty swww neovim git curl wget
     firefox steam discord spotify
     opera
-    bluez bluez-utils pulseaudio pavucontrol
+    bluez pulseaudio pavucontrol
     networkmanagerapplet
 
     # Wine & helpers
