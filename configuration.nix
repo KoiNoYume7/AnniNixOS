@@ -10,6 +10,16 @@
     # ./hardware/desktop.nix
   ];
 
+  fileSystems."/" = {
+    device = "/dev/sda5";
+    fsType = "ext4";
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/sda1";
+    fsType = "vfat";
+  };
+
   ### Boot Options
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -74,7 +84,12 @@ environment.sessionVariables = {
   services.blueman.enable = true;
 
   ### Sound
-  hardware.pulseaudio.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
   hardware.pulseaudio.support32Bit = true;
   security.rtkit.enable = true;
 
