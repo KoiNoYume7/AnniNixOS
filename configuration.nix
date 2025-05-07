@@ -11,12 +11,12 @@
   ];
 
   fileSystems."/" = {
-    device = "/dev/sda5";
+    device = "/dev/nvme0n1p5";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/sda1";
+    device = "/dev/nvme0n1p1";
     fsType = "vfat";
   };
 
@@ -33,7 +33,7 @@
   ### Localization
   time.timeZone = "Europe/Zurich";
   i18n.defaultLocale = "en_US.UTF-8";
-  console.keyMap = "us";
+  console.keyMap = "de_CH";
 
   ### Users
   users.users.akira = {
@@ -47,17 +47,17 @@
   ### Hyprland & Environment
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
+
   programs.hyprland = {
-  enable = true;
-  xwayland.enable = true;
-  # nvidiaPatches = true; # only if using NVIDIA
-};
+    enable = true;
+    xwayland.enable = true;
+    # nvidiaPatches = true; # only if using NVIDIA
+  };
 
-environment.sessionVariables = {
-  WLR_NO_HARDWARE_CURSORS = "1";
-  NIXOS_OZONE_WL = "1";
-};
-
+  environment.sessionVariables = {
+    WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
+  };
 
   environment.systemPackages = with pkgs; [
     hyprland waybar wofi kitty swww neovim git curl wget
@@ -90,6 +90,7 @@ environment.sessionVariables = {
     pulse.enable = true;
     jack.enable = true;
   };
+  hardware.pulseaudio.enable = false;
   hardware.pulseaudio.support32Bit = true;
   security.rtkit.enable = true;
 
@@ -102,6 +103,9 @@ environment.sessionVariables = {
 
   ### Allow Unfree Packages (Steam, Discord, etc.)
   nixpkgs.config.allowUnfree = true;
+
+  ### Flatpak Support
+  services.flatpak.enable = true;
 
   ### Systemd Service: Fancy Boot Logs
   systemd.services.yume-bootlog = {
