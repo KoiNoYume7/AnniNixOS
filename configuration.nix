@@ -33,7 +33,7 @@
   ### Localization
   time.timeZone = "Europe/Zurich";
   i18n.defaultLocale = "en_US.UTF-8";
-  console.keyMap = "de_CH";
+  console.keyMap = "de";
 
   ### Users
   users.users.akira = {
